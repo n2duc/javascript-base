@@ -1,0 +1,25 @@
+<div class="toast toast__check">
+            <div class="toast__icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="toast__info">
+                <h3 class="toast__title">Checked</h3>
+                <p class="toast__msg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, temporibus?</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+
+        <div class="toast toast__error" style="animation: 0.3s ease 0s 1 normal none running slideLeft, 1s linear 0.3s 1 normal forwards running fadeOut;">
+                    <div class="toast__icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
+                    <div class="toast__info">
+                        <h3 class="toast__title">Thất bại</h3>
+                        <p class="toast__msg">Bạn đã đăng ký tài khoản thành công !</p>
+                    </div>
+                    <div class="toast__close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>

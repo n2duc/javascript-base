@@ -1,0 +1,32 @@
+.title {
+    padding: 5px 20px;
+    width: 220px;
+    height: 50px;
+    font-size: 30px;
+    color: #fff;
+    background-image: linear-gradient(21deg, yellow, blue);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 20px 20px;
+}
+
+h2 {
+    display: flex;
+    text-align: center;
+}
+
+.title:hover {
+    color: #00b4d8;
+    background-image: linear-gradient(20deg, #8eecf5, #fde4cf);
+}
+
+button {
+    margin-top: 5px;
+    border-radius: 5px;
+    font-family: Roboto, Helvetica, Arial;
+}
+
+button:hover {
+    background-color: #99d98c;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

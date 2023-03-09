@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .title {
+            color: blue;
+            background: yellow;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .toggle {
+            color: aqua;
+        }
+        .link {
+            display: block;
+        }
+        ul {
+            display: none;
+        }
+        input:focus ~ ul {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <h1 class="content">Hello Word!</h1>
+    </div>
+    <div class="box2 card">
+        <h1>N2D</h1>
+    </div>
+    <!-- DOM Events -->
+    <input type="text" >
+    <input type="checkbox" >
+
+    <select>
+        <option value="js1">Javascript</option>
+        <option value="jv2">Java</option>
+        <option value="pt3">Python</option>
+    </select>
+    <input type="text" name="" id="exit">
+
+    <!-- PreventDefault -->
+    <br>
+    <a href="https://www.facebook.com/" class="link">Facebook</a>
+    <a href="https://www.google.com/maps" class="link">Google</a>
+
+    <input type="text" class="input">
+    <ul>
+        <li>Java</li>
+        <li>PHP</li>
+        <li>Python</li>
+    </ul>
+
+    <div class="cha">
+        DIV
+        <button class="con">Click</button>
+    </div>
+
+    <!-- EventListenter -->
+    <button id="btn">Click me!</button>
+    
+    <script src="./dom.js"></script>
+</body>
+</html>
