@@ -1,0 +1,9 @@
+{
+    "courses": [
+        {
+            "id": 1,
+            "name": "Javascript cho may thang lon",
+            "description": "May thang lol nay sao cu hoc JS the, hoc Java di dmm"
+        }
+    ]
+}
