@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: #f1f1f1;
+}
+li {
+    list-style: none;
+}
+.btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background: #ADA2FF;
+    color: #FFF8E1;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn:hover {
+    background: #8f83e6;
+}
+.container {
+    padding: 20px;
+    width: 50%;
+    background: #e7efff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+.header-feedback {
+    padding: 10px 15px;
+    background: #ECF2FF;
+}
+.header-feedback .title {
+    color: #464848;
+    font-size: 24px;
+    line-height: 26px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+#list-courses {
+    height: 400px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#list-courses::-webkit-scrollbar {
+    display: none;
+}
+#list-courses .course {
+    background: #ffffff;
+    padding: 5px 20px 10px;
+    border-radius: 5px;
+}
+#list-courses .course .author {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C3333;
+}
+#list-courses .course .decs {
+    font-size: 14px;
+    color: #525252;
+    margin-bottom: 6px;
+}
+.course .btn {
+    margin-right: 8px;
+}
+.feedback-form {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.feedback-form .input {
+    display: flex;
+    align-items: center;
+}
+.feedback-form label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #464848;
+    margin-right: 16px;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.feedback-form input {
+    display: block;
+    width: 100%;
+    padding: 14px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.feedback-form .buttons {
+    text-align: center;
+}
+.create-btn.btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+}

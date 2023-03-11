@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback FetchAPI</title>
+    <link rel="stylesheet" href="./feedback.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-feedback">
+            <h2 class="title">Employee Feedback Survey</h2>
+            <ul id="list-courses"></ul>
+        </div>
+
+        <div class="feedback-form">
+            <div class="input">
+                <label>Name:</label>
+                <input class="name" type="text" name="name" placeholder="Type name here">
+            </div>
+            <div class="input">
+                <label>Content:</label>
+                <input class="description" type="text" name="description" placeholder="Type your content">
+            </div>
+            <div class="buttons">
+                <button class="create-btn btn" id="create-btn">Submit</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./fetchAPT.js"></script>
+</body>
+</html>
