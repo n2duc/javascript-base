@@ -106,6 +106,7 @@ li {
 .feedback-form .buttons {
     text-align: center;
 }
+.handle-button.btn,
 .create-btn.btn {
     padding: 10px 16px;
     font-size: 14px;

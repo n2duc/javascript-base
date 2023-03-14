@@ -13,7 +13,7 @@ fetch(postApi)
     .catch(err => console.log(err))
 
 // Making fakeAPI with json-server package
-const courseApi = 'http://localhost:3000/courses'
+let courseApi = 'http://localhost:3000/courses'
 fetch(courseApi)
     .then(res => res.json())
     .then(res => console.log(res))
@@ -65,28 +65,30 @@ function handleDeleteCourse(idCourse) {
 function handleUpdateForm(idCourse) {
     let nameInput = document.querySelector('.name')
     let descriptionInput = document.querySelector('.description')
-    let handleBtn = `
-        <button class="handle-button" id="update-btn">Update</button>
-        <button class="handle-button" id="cancel-btn">Cancle</button>
-    `
     let doubleBtn = document.querySelectorAll('.handle-button')
+    let handleBtn = `
+        <button class="handle-button btn" id="update-btn">Update</button>
+        <button class="handle-button btn" id="cancel-btn">Cancle</button>
+    `
     doubleBtn.forEach(btn => btn.remove())
     document.getElementById('create-btn').insertAdjacentHTML('afterend', handleBtn)
     
     let updateBtn = document.getElementById('update-btn')
-    let cancelBtn = document.getElementById('cancel-btn')
     updateBtn.onclick = () => {
         let formData = {
             name: nameInput.value,
             description: descriptionInput.value
         }
-        handleUpdateCourse(idCourse, formData, () => {
+        handleUpdateCourse(idCourse, formData, function() {
             getCourses(renderCourses)
-            nameInput.value = ''
-            descriptionInput.value = ''
-            doubleBtn.forEach((btn) => btn.remove())
+            nameInput.value = '';
+            descriptionInput.value = '';
+            doubleBtn.forEach(function(btn) {
+                btn.remove();
+            })
         })
     }
+    let cancelBtn = document.getElementById('cancel-btn')
     cancelBtn.onclick = () => {
         nameInput.value = ''
         descriptionInput.value = ''
@@ -102,7 +104,7 @@ function handleUpdateForm(idCourse) {
 }
 function handleUpdateCourse(idCourse, data, callback) {
     let options = {
-        method: 'PUT',
+        method: "PUT",
         header: {
             "Content-Type": "application/json",
         },
