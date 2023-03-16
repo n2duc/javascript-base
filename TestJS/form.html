@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Try It Yourself </title>
+</head>
+<style>
+    .btn {
+        border: none;
+        outline: none;
+        padding: 5px 10px;
+        background-color: azure;
+        transition: 0.3s ease;
+    }
+    .btn.active {
+        background: aqua;
+    }
+</style>
+<body>
+    <p> Chuyển đổi số nguyên sang số la mã. </p>
+    <form>
+        <label> Number: <input type="text" id="int" class="input"/> </label>
+        <button type="button" id="submit" class="btn"> Submit </button>
+    </form>
+    <b></b>
+    <p id="demo"></p>
+
+    <p> Chuyển đổi số la mã sang số nguyên. </p>
+    <form>
+        <label> Roman: <input id="roman"/></label>
+        <button type="button" id="change"> Change</button>
+    </form>
+    <p id="demo2"></p>
+
+    <script src="./capcha.js"></script>
+    <script src="./test.js"></script>
+</body>
+
+</html>
