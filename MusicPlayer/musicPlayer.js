@@ -1,11 +1,12 @@
 /*
-8. Active song
 9. Scroll active song into view
 10. Play song when click
 */
 
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
+
+const PLAYER_STORAGE_KEY = 'N2D'
 
 const player = $('.player')
 const cd = $('.cd')
@@ -17,12 +18,16 @@ const playBtn = $('.btn-toggle-play')
 const nextBtn = $('.btn-next')
 const prevBtn = $('.btn-prev')
 const randomBtn = $('.btn-random')
+const repeatBtn = $('.btn-repeat')
 const progress = $('#progress')
+const playList = $('.playlist')
 
 const app = {
     currentIndex: 0,
     isPlaying: false,
     isRandom: false,
+    isRepeat: false,
+    config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     songs: [
         {
             name: 'Cheri Cheri Lady',
@@ -73,11 +78,15 @@ const app = {
             image: './images/perfect2.jpg'
         }
     ],
+    setConfig: function(key, value) {
+        this.config[key] = value
+        localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    },
     //1. Render songs
     render: function() {
-        const htmls = this.songs.map(song => {
+        const htmls = this.songs.map((song, index) => {
             return `
-                <div class="song">
+                <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
                     <div class="thumb" style="background-image: url(${song.image});"></div>
                     <div class="body">
                         <h3 class="title">${song.name}</h3>
@@ -89,7 +98,7 @@ const app = {
                 </div>
             `
         })
-        $('.playlist').innerHTML = htmls.join('')
+        playList.innerHTML = htmls.join('')
     },
     defineProperties: function() {
         Object.defineProperty(this, 'currentSong', {
@@ -156,6 +165,8 @@ const app = {
                 _.next()
             }
             audio.play()
+            _.render()
+            _.scrollToActiveSong()
         }
         prevBtn.onclick = () => {
             if (_.isRandom) {
@@ -164,22 +175,62 @@ const app = {
                 _.prev()
             }
             audio.play()
+            _.render()
+            _.scrollToActiveSong()
         }
         //6. Random
         randomBtn.onclick = () => {
             _.isRandom = !_.isRandom
+            _.setConfig('isRandom', _.isRandom)
             randomBtn.classList.toggle('active', _.isRandom)
         }
         //7. Next / Repeat when ended
-        audio.onended = () => {
-            nextBtn.click()
+        repeatBtn.onclick = () => {
+            _.isRepeat = !_.isRepeat
+            _.setConfig('isRepeat', _.isRepeat)
+            repeatBtn.classList.toggle('active', _.isRepeat)
         }
+        audio.onended = () => {
+            if (_.isRepeat) {
+                audio.play()
+            } else {
+                nextBtn.click()
+            }
+        }
+
+        playList.onclick = (e) => {
+            const songTarget = e.target.closest('.song:not(.active)')
+            const optionTarget = e.target.closest('.option')
+            if (songTarget || optionTarget) {
+                if (songTarget) {
+                    _.currentIndex = Number(songTarget.dataset.index)
+                    _.loadCurrentSong()
+                    _.render()
+                    audio.play()
+                }
+                if (optionTarget) {
+
+                }
+            }
+        }
+    },
+    scrollToActiveSong: function() {
+        setTimeout(() => {
+            $('.song.active').scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            })
+        }, 300)
     },
     loadCurrentSong: function() {
         heading.textContent = this.currentSong.name
         singerCurr.textContent = this.currentSong.singer
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
         audio.src = this.currentSong.path
+    },
+    loadConfig: function() {
+        this.isRandom = this.config.isRandom
+        this.isRepeat = this.config.isRepeat
     },
     next: function() {
         this.currentIndex++
@@ -204,10 +255,13 @@ const app = {
         this.loadCurrentSong()
     },
     start: function() {
+        this.loadConfig()
         this.defineProperties();
         this.handleEvents();
         this.loadCurrentSong();
         this.render();
+        randomBtn.classList.toggle('active', this.isRandom)
+        repeatBtn.classList.toggle('active', this.isRepeat)
     }
 }
 app.start()
