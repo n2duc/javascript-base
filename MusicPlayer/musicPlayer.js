@@ -1,11 +1,4 @@
 /*
-1. Render songs
-2. Scroll top
-3. Play / Pause / Seek
-4. CD rotate
-5. Next / prev
-6. Random
-7. Next / Repeat when ended
 8. Active song
 9. Scroll active song into view
 10. Play song when click
@@ -17,6 +10,7 @@ const $$ = document.querySelectorAll.bind(document)
 const player = $('.player')
 const cd = $('.cd')
 const heading = $('.curr-music-play')
+const singerCurr = $('.singer-name')
 const cdThumb = $('.cd-thumb')
 const audio = $('#audio')
 const playBtn = $('.btn-toggle-play')
@@ -64,15 +58,22 @@ const app = {
             name: 'My Love',
             singer: 'Westlife',
             path: './music/mylove.mp3',
-            image: './images/mylove.jpg'
+            image: './images/mylove.webp'
         },
         {
             name: 'Why Not Me',
             singer: 'Enrique Iglesias',
             path: './music/whynotme.mp3',
             image: './images/whynotme.jpg'
+        },
+        {
+            name: 'Perfect Two',
+            singer: 'Auburn',
+            path: './music/perfect2.mp3',
+            image: './images/perfect2.jpg'
         }
     ],
+    //1. Render songs
     render: function() {
         const htmls = this.songs.map(song => {
             return `
@@ -101,6 +102,7 @@ const app = {
         const _ = this
         const cdWidth = cd.offsetWidth
 
+        //4. CD rotate
         const cdAnimate = cdThumb.animate([
             { transform: 'rotate(360deg)' }
         ], {
@@ -109,6 +111,7 @@ const app = {
         })
         cdAnimate.pause()
 
+        //2. Scroll top
         document.onscroll = function() {
             const scrollTop = window.scrollY
             const newCDWidth = cdWidth - scrollTop
@@ -116,6 +119,7 @@ const app = {
             cd.style.opacity = newCDWidth/cdWidth
         }
 
+        //3. Play / Pause / Seek
         playBtn.onclick = () => {
             if (_.isPlaying) {
                 audio.pause()
@@ -144,6 +148,7 @@ const app = {
             const seekTime = audio.duration / 100 * e.target.value
             audio.currentTime = seekTime
         }
+        //5. Next / prev
         nextBtn.onclick = () => {
             if (_.isRandom) {
                 _.playRandomSong()
@@ -160,16 +165,19 @@ const app = {
             }
             audio.play()
         }
+        //6. Random
         randomBtn.onclick = () => {
             _.isRandom = !_.isRandom
             randomBtn.classList.toggle('active', _.isRandom)
         }
+        //7. Next / Repeat when ended
         audio.onended = () => {
             nextBtn.click()
         }
     },
     loadCurrentSong: function() {
         heading.textContent = this.currentSong.name
+        singerCurr.textContent = this.currentSong.singer
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
         audio.src = this.currentSong.path
     },

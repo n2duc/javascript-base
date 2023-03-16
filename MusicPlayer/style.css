@@ -2,6 +2,7 @@
 :root {
     --primary-color: #591fec;
     --text-color: #333;
+    --shadow-color: #6a34f3e2;
 }
 * {
     padding: 0;
@@ -53,14 +54,19 @@ header {
     margin-bottom: 10px;
 }
 
-header h4 {
+header .status-title {
     color: var(--primary-color);
     font-size: 12px;
 }
 
-header h2 {
+header .curr-music-play {
     color: var(--text-color);
     font-size: 20px;
+}
+header .singer-name {
+    color: #666;
+    font-size: 14px;
+    line-height: 14px;
 }
 
 /* CD */
@@ -92,6 +98,9 @@ header h2 {
 .control .btn.active {
     color: var(--primary-color);
 }
+.control .btn.active i {
+    text-shadow: 0 0 18px var(--shadow-color);
+}
 .control .btn-toggle-play {
     width: 56px;
     height: 56px;
@@ -121,7 +130,7 @@ header h2 {
     appearance: none;
     width: 14px;
     height: 14px;
-    border-radius: 4px;
+    border-radius: 10px;
     background-color: var(--primary-color);
     cursor: pointer;
 }
