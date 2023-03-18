@@ -25,7 +25,9 @@ function Validator(options) {
             switch (inputElement.type) {
                 case 'radio':
                 case 'checbox':
-                    errorMessage = rules[i](inputElement.value)
+                    errorMessage = rules[i](
+                        formElement.querySelector(rule.selector + ':checked')
+                    )
                     break
                 default:
                     errorMessage = rules[i](inputElement.value)
@@ -62,7 +64,27 @@ function Validator(options) {
                 if (typeof options.onSubmit === 'function') {
                     let enableInputs = formElement.querySelectorAll('[name]')
                     let formValues = Array.from(enableInputs).reduce((values, input) => {
-                        values[input.name] = input.value
+                        switch (input.type) {
+                            case 'radio':
+                                values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value
+                                break
+                            case 'checkbox':
+                                if (!input.matches(':checked')) {
+                                    values[input.name] = ''
+                                    return values
+                                }
+
+                                if (!Array.isArray(values[input.name])) {
+                                    values[input.name] = []
+                                }
+                                values[input.name].push(input.value)
+                                break
+                            case 'file':
+                                values[input.name] = input.files
+                                break
+                            default: 
+                                values[input.name] = input.value
+                        }
                         return values
                     }, {})
                     options.onSubmit(formValues)
@@ -80,44 +102,44 @@ function Validator(options) {
                 selectorRules[rule.selector] = [rule.test]
             }
 
-            let inputElement = formElement.querySelector(rule.selector)
-            let errorElement = getParent(inputElement, options.formGroupSelector).querySelector('.form-message')
-            if (inputElement) {
+            let inputElements = formElement.querySelectorAll(rule.selector)
+            Array.from(inputElements).forEach((inputElement) => {
                 // Xử lý TH blur ra ngoài
                 inputElement.onblur = () => {
                     validate(inputElement, rule)
                 }
                 // Xử lý khi người dùng nhập vào input
                 inputElement.oninput = () => {
+                    let errorElement = getParent(inputElement, options.formGroupSelector).querySelector('.form-message')
                     errorElement.innerText = ''
                     getParent(inputElement, options.formGroupSelector).classList.remove('invalid')
                 }
-            }
+            })
         })
     }
 }
-Validator.isRequired = function(selector) {
+Validator.isRequired = function(selector, message) {
     return {
         selector: selector,
         test: function(value) {
-            return value.trim() ? undefined : 'Vui lòng nhập trường này!'
+            return value ? undefined : message || 'Vui lòng nhập trường này!'
         }
     }
 }
-Validator.isEmail = function(selector) {
+Validator.isEmail = function(selector, message) {
     return {
         selector: selector,
         test: function(value) {
             let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-            return regex.test(value) ? undefined : 'Trường này phải là email!'
+            return regex.test(value) ? undefined : message || 'Trường này phải là email!'
         }
     }
 }
-Validator.minLength = function(selector, min) {
+Validator.minLength = function(selector, min, message) {
     return {
         selector: selector,
         test: function(value) {
-            return value.length >= min ? undefined : `Vui lòng nhập tối thiểu ${min} ký tự`
+            return value.length >= min ? undefined : message || `Vui lòng nhập tối thiểu ${min} ký tự`
         }
     }
 }
@@ -138,11 +160,12 @@ Validator({
         Validator.isEmail('#email'),
         Validator.minLength('#password', 6),
         Validator.isRequired('#password_confirmation'),
+        Validator.isRequired('#province'),
         Validator.isConfirmed('#password_confirmation', function() {
             let value = document.querySelector('#form-1 #password').value
             return value
         }, 'Mật khẩu xác nhận chưa chính xác!'),
-        Validator.isRequired('#gender')
+        Validator.isRequired('input[name="gender"]', 'Vui lòng lựa chọn giới tính!')
     ],
     onSubmit: function(data) {
         console.log(data)

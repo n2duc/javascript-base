@@ -65,7 +65,19 @@
             </div>
 
             <div class="form-group">
-                <label for="" class="form-label">Giới tính</label>
+                <label for="province" class="form-label">
+                    Tỉnh/TP
+                </label>
+                <select name="province" id="province" class="form-control">
+                    <option value="">-- Chọn Tỉnh/TP --</option>
+                    <option value="dn">Đà Nẵng</option>
+                    <option value="qtr">Quảng Trị</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Giới tính</label>
                 <div class="form-gender">
                     <input id="gender" type="radio" name="gender" value="male" class="form-control">Nam
                     <input id="gender" type="radio" name="gender" value="female" class="form-control">Nữ
@@ -77,6 +89,6 @@
         </form>
     </div>
 
-    <script src="./index.js"></script>
+    <script src="./validation1.js"></script>
 </body>
 </html>
