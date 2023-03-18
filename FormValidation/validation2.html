@@ -22,6 +22,7 @@
                     type="text"
                     placeholder="VD: Ngoc Duc"
                     class="form-control"
+                    rules="required"
                 />
                 <span class="form-message"></span>
             </div>
@@ -34,6 +35,7 @@
                     type="text"
                     placeholder="VD: email@domain.com"
                     class="form-control"
+                    rules="required|email"
                 />
                 <span class="form-message"></span>
             </div>
@@ -46,6 +48,7 @@
                     type="password"
                     placeholder="Nhập mật khẩu"
                     class="form-control"
+                    rules="required|min:6"
                 />
                 <span class="form-message"></span>
             </div>
@@ -55,5 +58,12 @@
     </div>
 
     <script src="./validation2.js"></script>
+    <script>
+        let form = new Validator('#register-form');
+        form.onSubmit = (data) => {
+            
+        }
+
+    </script>
 </body>
 </html>
