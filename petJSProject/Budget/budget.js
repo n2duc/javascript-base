@@ -48,3 +48,7 @@ const modifyElement = (element, edit = false) => {
     parentDiv.remove();
 };
 
+const listCreator = (expenseName, expenseValue) => {
+    
+};
+
