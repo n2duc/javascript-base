@@ -1,0 +1,31 @@
+# Array
+
+- Mảng được đánh số từ 0(index)
+- Độ dài của mảng dùng .length, chạy từ 1
+- _map_ là phương thức duyệt qua các phần tử trong mảng và nó sẽ tạo ra mảng mới dựa vào điều kiện ở callback và không ảnh hưởng tới mảng gốc
+- _forEach_ cũng duyệt qua các phần tử trong mảng, forEach không có return
+- _sort_ dùng để sắp xếp các phần tử trong mảng theo chuẩn UTF-16, nó sẽ thay đổi luôn mảng gốc(cẩn thận khi sử dụng)
+- a > b ? `1` : -1 -> 1(con số lớn hơn 0): sắp xếp tăng dần, -> -1(con số nhỏ hơn 0): sắp xếp giảm dần, 0 nó sẽ giữ nguyên
+- `a - b`: sắp xếp tăng dần, `b - a` : sắp xếp giảm dần
+
+- _unshift_ là phương thức dùng để thêm phần tử vào đầu mảng
+- _shift_ dùng để xóa phần tử đầu, khi dùng nó mình có thể lưu giá trị bị xóa vào biến
+- _push_ là phương thức dùng để thêm phần tử vào cuối mảng
+- _pop_ dùng để xóa phần tử cuối, khi dùng nó mình có thể lưu giá trị bị xóa vào biến
+- _some_ nó sẽ trả về true nếu có ít nhất 1 điều kiện đúng, ngược lại trả về false
+- _every_ nó sẽ trả về true nếu tất điều kiện đều đúng, ngược lại là false
+- _find_ nó sẽ trả ra phần tử thỏa mãn điều kiện nào đó, nếu không thỏa mãn nó sẽ trả ra `undefined`
+- _findIndex_ nó sẽ trả ra index của phần tử nếu thỏa mãn điều kiện, ngược lại là -1
+- _reverse_ đảo ngược mảng, nó ảnh hưởng tới mảng gốc
+- _filter_ tạo ra mảng mới, duyệt qua các phần tử trong mảng và lọc ra những phần tử thỏa mãn điều kiện nào đó
+- _includes_ kiểm tra phần tử có tồn tại trong mảng hay không ?
+- _concat_ dùng để gộp mảng
+- _join_ dùng để nối các phần tử trong mảng lại với nhau thông qua prefix(nếu có)
+- _Array.isArray(value)_ kiểm tra value có phải là mảng hay không?
+- _slice_ dùng để sao chép các phần tử trong mảng ra mảng mới mà ko thay đổi mảng gốc
+- _splice_ dùng để thêm hoặc xóa phần tử trong mảng, nó thay đổi mảng gốc, nếu gán nó vào biến và thực hiện chức năng xóa thì nó sẽ trả ra mảng chứa phần tử bị xóa
+- _at_ trả ra giá trị ở vị trí index trong mảng, -1 là phần tử cuối cùng
+- _toString()_ convert mảng thành chuỗi
+- _reduce_ gom các phần tử trong mảng lại làm 1, thường gặp khi làm tính tổng các số trong mảng, hoặc nối chuỗi
+- _JSON.parse(JSON.stringify(originalList))_ dùng để sao chép một mảng phức tạp, có nhiều mảng lồng nhau
+- Sao chép mảng 1 cấp thì dùng Array.from, slice() hoặc spread operator
