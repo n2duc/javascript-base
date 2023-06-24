@@ -65,7 +65,7 @@ watchCallPromise()
     .catch((error) => console.log(error.name + " " + error.message));
 
 // Async Await
-async function main() {
+const main = async () => {
     try {
         const message = await watchCallPromise();
         console.log(message.name);

@@ -1,4 +1,5 @@
 //Cách thức hoạt động của việc truyền và không truyền initial value
+
 //Không truyền initial value
 Array.prototype.reduce2 = function(callback, result) {
     let i = 0;
