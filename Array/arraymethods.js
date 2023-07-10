@@ -137,7 +137,7 @@ const Vehicle = [
 const vehicleList = Vehicle.reduce(function(courses, list) {
     return courses.concat(list.courses)
 }, [])
-console.log(vehicleList)
+// console.log(vehicleList)
 
 const htmls = vehicleList.map((course) => { //Duyet mang ra the html
     return `
@@ -147,6 +147,16 @@ const htmls = vehicleList.map((course) => { //Duyet mang ra the html
                 <p>${course.Country}</p>
             </div>`
 })
-const box = document.querySelector('.box')
-box.innerHTML = htmls.join('')
-console.log(htmls.join(''))
+// const box = document.querySelector('.box')
+// box.innerHTML = htmls.join('')
+// console.log(htmls.join(''))
+
+const Dogs = {
+    name: "Gau Gau",
+    color: "red",
+
+    info: function() {
+        console.log(this.name);
+    }
+}
+Dogs.info();

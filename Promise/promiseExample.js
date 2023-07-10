@@ -1,3 +1,4 @@
+/*
 let users = [
     {
         id: 1,
@@ -70,3 +71,36 @@ getComments()
         })
         commentBox.innerHTML = cmt
     })
+*/
+
+setTimeout(() => {
+    speak("Em oi, vu em to qua cho anh lam quen voi");
+}, 2000);
+console.log("Deo anh oi, lon em tham");
+function speak(mes) {
+    console.log(mes);
+}
+setTimeout(() => {
+    console.log("Hup, anh hup het");
+}, 0);
+console.log("Dau quy bao");
+
+
+var myPromise = new Promise(function(resolve, reject) {
+    setTimeout(() => resolve("Hello World"), 3000);
+    // reject(x);
+});
+myPromise
+    .then(function(value) {
+        setTimeout(() => console.log(value), 3100);
+        return "Chao The Gioi";
+    })
+    .then(function(value) {
+        setTimeout(() => console.log(value), 3200);
+        return "こんにちは世界";
+    })
+    .then(function(value) {
+        setTimeout(() => console.log(value), 3300);
+        return "Привет, мир";
+    });
+setTimeout(() => console.log("Bonjour le monde"), 3000);

@@ -46,3 +46,10 @@ const Person = {
     girlFriend: true
 }
 console.log(Person.name.replace());
+
+const listAnimals = ["dog", "cat", "fish"]
+listAnimals[4] = "meoww"
+console.log(listAnimals.length)
+listAnimals.forEach(e => {
+    console.log(e)
+})

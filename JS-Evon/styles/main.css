@@ -1,0 +1,151 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+input,
+select,
+textarea {
+  background-color: transparent;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  font-family: "DM Sans", sans-serif;
+  padding: 20px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.search {
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid #eee;
+}
+.news-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.news-item {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  color: #333;
+  background-color: #eee;
+}
+.loading {
+  width: 40px;
+  height: 40px;
+  border-radius: 100rem;
+  border: 5px solid #2cccff;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  margin: 0 auto;
+  animation: spinner 1s infinite linear;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* create-post */
+.create-post {
+  max-width: 500px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 20px auto;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.create-post label {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+}
+.create-post input {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+.create-post button {
+  width: 100%;
+  background-color: #6a5af9;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+}
+.post-list {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.post-item {
+  padding: 10px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: relative;
+}
+.post-image {
+  aspect-ratio: 1;
+  border-radius: inherit;
+  object-fit: cover;
+}
+.post-content {
+  padding: 20px 0;
+}
+.post-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.post-author {
+  font-size: 14px;
+  color: #333;
+}
+.post-remove {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: #e74c4c;
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+}

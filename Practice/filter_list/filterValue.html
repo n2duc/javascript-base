@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .listItem {
+        padding: 20px;
+        width: 600px;
+        height: 500px;
+        background-color: #f1f1f1;
+        border-radius: 6px;
+    }
+    .searchBox {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .inputSearch {
+        width: 100%;
+        padding: 5px 10px;
+        height: 100%;
+    }
+    .searchBtn {
+        padding: 5px 10px;
+        height: 100%;
+    }
+    .buttons {
+        margin-bottom: 20px;
+        gap: 20px;
+    }
+    .buttons button {
+        padding: 5px 10px;
+        border: 1px solid #000;
+        background-color: #fff;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+<body>
+    <section class="listItem">
+        <div class="searchBox">
+            <input type="text" class="inputSearch" placeholder="Search...">
+            <button class="searchBtn">Search</button>
+        </div>
+        <div class="buttons" style="display: flex;">
+            <button data-btn="all">All</button>
+            <button data-btn="animal">Animals</button>
+            <button data-btn="car">Cars</button>
+            <button data-btn="phone">Smartphone</button>
+            <button data-btn="laptop">Latop</button>
+        </div>
+        <div class="datas" style="display: grid; grid-template-columns: repeat(3, 1fr);">
+            <div data-name="animal">Dog</div>
+            <div data-name="animal">Dog VN</div>
+            <div data-name="laptop">MSI</div>
+            <div data-name="phone">Iphone 13</div>
+            <div data-name="car">Honda - Vision</div>
+            <div data-name="car">Honda - WinnerX</div>
+            <div data-name="animal">Cat</div>
+            <div data-name="phone">Iphone 14</div>
+            <div data-name="laptop">Asus</div>
+            <div data-name="car">Yamaha</div>
+            <div data-name="laptop">Acer</div>
+            <div data-name="laptop">Macbook</div>
+            <div data-name="phone">Xiaomi - Mi</div>
+            <div data-name="animal">Duck</div>
+            <div data-name="laptop">Dell</div>
+            <div data-name="animal">Elephant</div>
+            <div data-name="car">Honda - AB</div>
+            <div data-name="phone">Xiaomi - Redmi</div>
+            <div data-name="car">Yamaha Exciter</div>
+            <div data-name="car">Tesla</div>
+            <div data-name="phone">Samsung Note</div>
+            <div data-name="phone">Samsung A</div>
+            <p class="noData hidden">Not Found</p>
+        </div>
+    </section>
+
+    <script>
+        const buttons = document.querySelectorAll('.buttons button');
+        const datas = document.querySelectorAll('.datas div');
+
+        const inputSearch = document.querySelector('.inputSearch');
+        const searchBtn = document.querySelector('.searchBtn');
+        const noData = document.querySelector('.noData');
+
+        buttons.forEach((e) => {
+            e.onclick = () => {
+                noData.classList.add("hidden")
+                const dataName = e.dataset.btn;
+                datas.forEach((data) => {
+                    data.classList.add("hidden");
+                    if (data.dataset.name === dataName) {
+                        data.classList.remove("hidden");
+                    } else if (dataName === 'all') {
+                        data.classList.remove("hidden");
+                    }
+                })
+            }
+        });
+
+        searchBtn.onclick = () => {
+            const inputSearchValue = inputSearch.value.toLowerCase();
+            let count = 0;
+            console.log(count)
+            datas.forEach((data) => {
+                const dataValue = data.innerText.toLowerCase();
+                data.classList.add("hidden");
+                if (dataValue.indexOf(inputSearchValue) > -1) {
+                    ++count;
+                    data.classList.remove("hidden");
+                }
+            })
+            count === 0 ? noData.classList.remove("hidden") : noData.classList.add("hidden");
+        };
+
+        window.addEventListener("keypress", (e) => {
+            if(e.key == "Enter") {
+                e.preventDefault();
+                searchBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
