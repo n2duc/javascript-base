@@ -8,6 +8,7 @@ String
 Number
 Boolean
 Function (function properties)
+function prototype (Call, Bind, Apply)
 Object
 Class
 Loop

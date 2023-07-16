@@ -157,6 +157,20 @@ const Dogs = {
 
     info: function() {
         console.log(this.name);
+    },
+    cut() {
+        console.log(`Cut ${this.color}`)
+    },
+    render() {
+        this.info();
+        this.cut();
     }
 }
-Dogs.info();
+Dogs.render();
+
+const userAccount = ["Clifford Beck", "Mario Zimmerman", "Lawrence Sharp", "Gregory Jordan", "Nguyen Ngoc Duc"];
+const lastNames = userAccount.map((user) => {
+    const lastName = user.split(" ").slice(-1).join(" ");
+    return lastName
+})
+console.log(lastNames);

@@ -5,7 +5,7 @@ console.log(name2);
 
 // Xoa phan tu trung trong mang
 const arr = [1,1,1,2,3,3,4,4,4,4,5]
-// Doi Array la string
+// Doi voi Array la string
 const arrString = ["Duc", "Duc", "Thuong", "Thuong", "Thuong", "Thuong", "Nhu"]
 // Cach 1 (dai)
 const uniqueArr = [];

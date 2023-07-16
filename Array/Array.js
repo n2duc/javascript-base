@@ -2,8 +2,9 @@ const animals = ["ant", "bison", "camel", "duck", "elephant"];
 // Map method array
 const map1 = animals.map((x) => x.length);
 // console.log(map1);
+console.log("ForEach Method")
 const newAni = animals.forEach((element) => {
-    // console.log(element);
+    console.log(element.length);
 });
 const filterAni = animals.filter((element) => element.length > 3);
 console.log(filterAni);
@@ -46,3 +47,11 @@ const user2 = JSON.stringify(setUser, (key, value) => {
     return value;
 });
 console.log(user2);
+
+const companies = ["mgm", "fpt", "sg"];
+function logName(a, b, c) {
+    console.log(a, b, c);
+}
+// logName.apply(null, companies);
+logName(...companies);
+const methodLast = [];
