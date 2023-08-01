@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Popup</title>
+</head>
+<style>
+    * {  margin: 0; padding: 0; }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .modal-btn {
+        border: 2px solid #6a5af9;
+        outline: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        background-color: #dfdbff;
+        color: #6a5af9;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.1s ease;
+    }
+    .modal-btn:hover {
+        background-color: #8274fa;
+        color: #ffffff;
+    }
+    .modal-section {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+    }
+    .modal-section.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
+    .modal-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: black;
+        opacity: 0.25;
+    }
+    .modal-content {
+        position: relative;
+        z-index: 2;
+        background-color: white;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 12px;
+        padding: 20px;
+        line-height: 2;
+    }
+    .modal-close {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        padding: 10px 20px;
+    }
+</style>
+<body>
+    <button class="modal-btn">Modal</button>
+    <div class="modal-section">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <h2>This is a modal opened</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis fugiat, nobis optio assumenda quidem porro!</p>
+            <button class="modal-close">Close Modal</button>
+        </div>
+    </div>
+
+    <script>
+        const btnModal = document.querySelector(".modal-btn");
+        const btnClose = document.querySelector(".modal-close")
+        const modalSection = document.querySelector(".modal-section");
+        btnModal.addEventListener("click", () => {
+            modalSection.classList.add("is-open");
+        })
+        btnClose.addEventListener("click", () => {
+            modalSection.classList.remove("is-open")
+        })
+    </script>
+</body>
+</html>

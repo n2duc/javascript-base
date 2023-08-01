@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./tab.css">
+    <title>Tab Active</title>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab-list">
+            <div class="tab-line"></div>
+            <div class="tab-item is-active" data-tab="recent">Recent</div>
+            <div class="tab-item" data-tab="popular">Popular</div>
+            <div class="tab-item" data-tab="trending">Trending</div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-inner-content is-active" data-tab="recent">
+                <h5>Recent content</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione, magni?</p>
+            </div>
+            <div class="tab-inner-content" data-tab="popular">
+                <h5>Popular content</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione, magni?</p>
+            </div>
+            <div class="tab-inner-content" data-tab="trending">
+                <h5>Trending content</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione, magni?</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll(".tab-item");
+        const contents = document.querySelectorAll(".tab-inner-content")
+        const line = document.querySelector(".tab-line")
+
+        function renderBgTab(e) {
+            line.style.width = e.offsetWidth + "px"
+            line.style.height = e.clientHeight + "px"
+            line.style.left = e.offsetLeft + "px"
+            line.style.top = e.offsetTop + "px"
+        }
+        renderBgTab(tabs[0])
+        
+        tabs.forEach((tab, index) => {
+            const content = contents[index];
+            tab.onclick = function() {
+                document.querySelector(".tab-item.is-active").classList.remove("is-active")
+                document.querySelector(".tab-inner-content.is-active").classList.remove("is-active")
+                tab.classList.add("is-active");
+                content.classList.add("is-active");
+                renderBgTab(this);
+            }
+        })
+    </script>
+</body>
+</html>

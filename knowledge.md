@@ -3,8 +3,8 @@ Variable (var, let, const) - Block scope
 Value [Tham trị] (string, number, boolean, undefined, null) => "primitive types"
 Reference [Tham chiếu] (function, array, object)
 Operator
-Array
-String
+Array (Array Prototype)
+String (String Prototype)
 Number
 Boolean
 Function (function properties)
@@ -27,6 +27,8 @@ Async (Callback, Asynchronous, Promise, Async/Await)
 Storage
 JSON
 this
+
+javascript observer pattern
 
 
 # Practice

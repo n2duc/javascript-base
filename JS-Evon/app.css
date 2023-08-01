@@ -22,7 +22,7 @@ body {
   font-family: "DM Sans", sans-serif;
   padding: 10px;
 }
-/* input.password {
+input.password {
   padding: 12px 24px;
   border-radius: 8px;
   background-color: transparent;
@@ -63,6 +63,6 @@ span.special {
   height: 200px;
   background-image: linear-gradient(to right, #ff6bcb, #ffb86c);
   border: 5px solid black;
-} */
+}
 @media screen and (max-width: 1023px) {
 }
