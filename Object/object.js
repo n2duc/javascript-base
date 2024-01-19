@@ -54,3 +54,17 @@ console.log("User5", User5);
 
 const hobby = undefined ?? "Badminton";
 console.log("hobby:", hobby);
+
+let your_drink;
+let reverse = function(s) {
+    return s.split("").reverse().join("");
+}
+let barista = {
+    str1: "ers",
+    str2: reverse("rap"),
+    str3: "amet",
+    request: function(preference) {
+        return preference + ".Secret word:" + this.str2 + this.str3 + this.str1;
+    }
+};
+console.log(barista.request(your_drink));
