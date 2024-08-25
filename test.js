@@ -79,3 +79,28 @@ let nums2 = [2, 5, 6];
 let n = 3;
 mergeSorted(nums1, m, nums2, n);
 console.log(nums1); // Output: [1, 2, 2, 3, 5, 6]
+
+
+const nameTest = "nguyen ngoc duc";
+const nameArray = nameTest.split(" ");
+// Expected: "Nguyen Ngoc Duc";
+// split => forEach => toUpperCase => slice => join
+nameArray.forEach((name, index) => {
+    nameArray[index] = name[0].toUpperCase() + name.slice(1);
+});
+const nameUpperCase = nameArray.join(" ");
+console.log(nameUpperCase)
+
+
+// Object
+const User = {
+    name: 'Duc',
+    age: 21,
+    hometown: "Quang Tri",
+    sayHi: function() {
+        console.log(`Hello my name is ${this.name}`);
+    }
+}
+User.name = 'Tien';
+//Tham trị và tham chiếu trong Javascript
+User.sayHi();

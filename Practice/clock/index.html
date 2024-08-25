@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="">
+        <div class="clock">
+            <div class="hour">hh</div>
+            <div class="minute">mm</div>
+            <div class="second">ss</div>
+        </div>
+    </div>
+    <script>
+        function clock() {
+            const hour = document.querySelector('.hour');
+            const minute = document.querySelector('.minute');
+            const second = document.querySelector('.second');
+
+            let date = new Date();
+            let hh = date.getHours() * 30;
+            let mm = date.getMinutes() * 6;
+            let ss = date.getSeconds() * 6;
+
+            hour.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+            minute.style.transform = `rotateZ(${mm}deg)`;
+            second.style.transform = `rotateZ(${ss}deg)`;
+        }
+
+        setInterval(clock, 1000);
+    </script>
+</body>
+</html>

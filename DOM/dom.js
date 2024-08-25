@@ -126,3 +126,4 @@ btn.addEventListener('click', example)
 setTimeout(() => {
     btn.removeEventListener('click', example)
 }, 3000)
+

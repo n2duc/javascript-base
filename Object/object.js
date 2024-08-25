@@ -68,3 +68,18 @@ let barista = {
     }
 };
 console.log(barista.request(your_drink));
+
+const info = {
+    name: "Ngoc Anh",
+    age: 30,
+    address: "Quang Tri",
+    speak: function() {
+        console.log("Hello");
+    },
+    university: {
+        name: "Duy Tan",
+        major: "IT"
+    }
+}
+console.log(info.university.name);
+

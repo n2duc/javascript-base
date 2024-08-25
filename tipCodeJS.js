@@ -1,7 +1,7 @@
-const nameAuthor = "Ngoc Duc";
+const nameAuthor = "Anh Tien";
 const nameRevert = nameAuthor.split("").reverse().join("");
 const name2 = nameAuthor.split(" ").reverse().join(" ");
-console.log(name2);
+console.log(nameRevert);
 
 // Xoa phan tu trung trong mang
 const arr = [1,1,1,2,3,3,4,4,4,4,5]
